@@ -64,11 +64,14 @@ map<string, Real> ChordsDescriptors::chordsHistogram(const vector<string>& chord
 
   // Increment
   for (int i=0; i<int(chords.size()); ++i) {
+    if (histogram.find(chords[i]) == histogram.end()) {
+      throw EssentiaException("ChordsDescriptors: Invalid chord: ", chords[i]);      
+    }
     histogram[chords[i]] += 1.0;
   }
 
   // Normalize
-  for (int i=0; i<int(histogram.size()); ++i) {
+  for (int i=0; i<int(ARRAY_SIZE(circleOfFifth)); ++i) {
     histogram[circleOfFifth[i]] *= 100.0 / (Real)chords.size();
   }
 
@@ -107,7 +110,7 @@ void ChordsDescriptors::compute() {
     key += "m";
   }
 
-    // Chords Histogram
+  // Chords Histogram
   map<string, Real> chordsHist = chordsHistogram(chords);
   map<string, Real> chordsHistNorm = chordsHistogramNorm(chordsHist, key);
 
