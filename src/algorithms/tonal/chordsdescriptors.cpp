@@ -107,7 +107,7 @@ void ChordsDescriptors::compute() {
     key += "m";
   }
 
-    // Chords Histogram
+  // Chords Histogram
   map<int, Real> chordsHist = chordsHistogram(chords);
   map<int, Real> chordsHistNorm = chordsHistogramNorm(chordsHist, key);
 
