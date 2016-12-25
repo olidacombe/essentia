@@ -49,7 +49,7 @@ void RingBufferInput::configure()
 	_impl = new RingBufferImpl(RingBufferImpl::kAvailable,parameter("bufferSize").toInt());
 }
 
-void RingBufferInput::add(Real* inputData, int size)
+void RingBufferInput::add(const Real* inputData, int size)
 {
 	//std::cerr << "adding " << size << " to ringbuffer with space " << _impl->_space << std::endl;
 	int added = _impl->add(inputData,size);

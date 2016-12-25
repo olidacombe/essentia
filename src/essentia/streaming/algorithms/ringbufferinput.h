@@ -34,7 +34,7 @@ class RingBufferInput : public Algorithm {
   RingBufferInput();
   ~RingBufferInput();
 
-  void add(Real* inputData, int size);
+  void add(const Real* inputData, int size);
 
   AlgorithmStatus process();
 
